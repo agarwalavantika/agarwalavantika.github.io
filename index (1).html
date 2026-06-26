@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avantika Agarwal — ML Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080808;
+  --bg2: #0F0F0F;
+  --bg3: #161616;
+  --surface: #1C1C1C;
+  --border: rgba(255,255,255,0.07);
+  --border-mid: rgba(255,255,255,0.11);
+  --border-strong: rgba(255,255,255,0.18);
+  --text: #EDEBE4;
+  --text-muted: #7A7875;
+  --text-dim: #3E3D3B;
+  --accent: #00BFA5;
+  --accent-dim: rgba(0,191,165,0.10);
+  --accent-glow: rgba(0,191,165,0.18);
+  --amber: #E8A020;
+  --amber-dim: rgba(232,160,32,0.10);
+  --blue: #4A9EFF;
+  --blue-dim: rgba(74,158,255,0.10);
+  --red: #E05555;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── TICKER ── */
+.ticker-wrap {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 9px 0;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-ticker 32s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 44px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+.ti-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: blink 2.4s ease-in-out infinite;
+}
+.ti-dot.amber { background: var(--amber); }
+.ti-dot.blue { background: var(--blue); }
+.ticker-item b { color: var(--text); font-weight: 500; }
+@keyframes scroll-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 56px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+.hero {
+  padding: 96px 56px 88px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.eyebrow::before { content: '› '; opacity: 0.45; }
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(44px, 6.5vw, 82px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  margin-bottom: 36px;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-sub {
+  max-width: 540px;
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.btn-fill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: #050505;
+  padding: 13px 26px; border-radius: 4px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  text-decoration: none; transition: opacity 0.18s;
+}
+.btn-fill:hover { opacity: 0.82; }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border-mid); color: var(--text-muted);
+  padding: 13px 26px; border-radius: 4px;
+  font-size: 13px; letter-spacing: 0.02em;
+  text-decoration: none; transition: border-color 0.18s, color 0.18s;
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── LAYOUT ── */
+.wrap { max-width: 1120px; margin: 0 auto; padding: 80px 56px; }
+.rule { border: none; border-top: 1px solid var(--border); max-width: 1120px; margin: 0 auto; }
+
+/* ── SECTION HEADER ── */
+.sec-eye {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.sec-eye::before { content: '// '; }
+.sec-h {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  margin-bottom: 52px;
+}
+
+/* ── ACTIVE RESEARCH CARDS ── */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 14px;
+}
+.rc {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px 24px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.rc:hover { border-color: var(--border-mid); }
+.rc-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.rc-bar.teal { background: var(--accent); }
+.rc-bar.amber { background: var(--amber); }
+.rc-bar.blue { background: var(--blue); }
+.rc-tag {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 3px 9px;
+  border-radius: 3px;
+  margin-bottom: 13px;
+  text-transform: uppercase;
+}
+.rc-tag.teal { background: var(--accent-dim); color: var(--accent); }
+.rc-tag.amber { background: var(--amber-dim); color: var(--amber); }
+.rc-tag.blue { background: var(--blue-dim); color: var(--blue); }
+.rc h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 9px;
+}
+.rc p { font-size: 12.5px; color: var(--text-muted); line-height: 1.65; }
+.rc-meta {
+  margin-top: 13px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+}
+
+/* ── ABOUT TWO-COL ── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.about-body { font-size: 15px; color: var(--text-muted); line-height: 1.85; }
+.about-body p + p { margin-top: 18px; }
+.about-body strong { color: var(--text); font-weight: 500; }
+
+.skills-stack { display: flex; flex-direction: column; gap: 26px; }
+.sk-group-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.sk-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.sk-tag {
+  font-size: 12px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  transition: border-color 0.18s, color 0.18s;
+}
+.sk-tag:hover { border-color: var(--border-strong); color: var(--text); }
+
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 30px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10px; bottom: 10px;
+  width: 1px;
+  background: var(--border);
+}
+.tl-item { position: relative; padding-bottom: 44px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -34px; top: 9px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border-mid);
+}
+.tl-item.now::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+.tl-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 5px;
+}
+.tl-role {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.tl-org { font-size: 13px; color: var(--accent); margin-bottom: 12px; }
+.tl-pts { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.tl-pts li {
+  font-size: 13px;
+  color: var(--text-muted);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.55;
+}
+.tl-pts li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+
+/* ── PUBLICATIONS ── */
+.pub-list { display: flex; flex-direction: column; gap: 0; }
+.pub-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 0 36px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.pub-item:first-child { border-top: 1px solid var(--border); }
+.pub-left { padding-top: 2px; }
+.pub-status-badge {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.pub-status-badge.prep { background: var(--amber-dim); color: var(--amber); }
+.pub-status-badge.submitted { background: var(--blue-dim); color: var(--blue); }
+.pub-venue {
+  margin-top: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+.pub-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin-bottom: 7px;
+}
+.pub-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+/* ── ACHIEVEMENTS ── */
+.ach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.ach {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: border-color 0.2s;
+}
+.ach:hover { border-color: var(--border-mid); }
+.ach-icon {
+  width: 34px; height: 34px;
+  border-radius: 5px;
+  background: var(--accent-dim);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.ach-body { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.ach-body strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 2px; }
+
+/* ── EDUCATION ── */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.edu-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px 26px;
+  transition: border-color 0.2s;
+}
+.edu-card:hover { border-color: var(--border-mid); }
+.edu-degree {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.edu-inst { font-size: 13px; color: var(--accent); margin-bottom: 10px; }
+.edu-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ── CONTACT ── */
+.contact-band {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 72px 56px;
+  text-align: center;
+}
+.contact-band h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+}
+.contact-band p { color: var(--text-muted); font-size: 15px; margin-bottom: 36px; max-width: 420px; margin-left: auto; margin-right: auto; }
+.contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 26px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+footer span {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  nav, .hero, .wrap, .contact-band, footer { padding-left: 24px; padding-right: 24px; }
+  .about-grid, .edu-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pub-item { grid-template-columns: 1fr; gap: 10px; }
+  .hero { padding-top: 56px; }
+  .hero h1 { font-size: 42px; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-label="Research status feed">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Avantika Agarwal</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow">ML Researcher · AI Evaluation · Reliable Systems</p>
+  <h1>Building AI<br>systems you can<br><em>actually trust.</em></h1>
+  <p class="hero-sub">
+    M.Tech (DA-IICT, 2026) specializing in evaluation methodology, robustness under distribution shift, and reproducible ML pipelines. My work in pathological speech taught me that the hardest problem in AI isn't building models — it's knowing when to trust them.
+  </p>
+  <div class="hero-ctas">
+    <a href="mailto:agarwalavantikaint@gmail.com" class="btn-fill">Get in touch →</a>
+    <a href="https://github.com/agarwalavantika" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
+    <a href="https://linkedin.com/in/agarwalavantika" target="_blank" rel="noopener" class="btn-outline">LinkedIn</a>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ACTIVE RESEARCH -->
+<div class="wrap" id="research">
+  <p class="sec-eye">Active work</p>
+  <h2 class="sec-h">Research in progress</h2>
+  <div class="research-grid">
+
+    <div class="rc">
+      <div class="rc-bar teal"></div>
+      <span class="rc-tag teal">In preparation</span>
+      <h3>Neural Backend Speaker Verification for Dysarthric Speech under Cross-Lingual Conditions</h3>
+      <p>Learned similarity estimation beyond cosine scoring for pathological speech. Proposes neural backend scoring with embedding difference and interaction features.</p>
+      <p class="rc-meta">ECAPA-TDNN · PyTorch · Cross-lingual eval</p>
+    </div>
+
+    <div class="rc">
+      <div class="rc-bar amber"></div>
+      <span class="rc-tag amber">Submitted · SPECOM 2026</span>
+      <h3>Prosodic Features for Classification of Normal vs. Dysarthric Speech</h3>
+      <p>Investigating prosodic and acoustic cues distinguishing dysarthric speech patterns, with implications for accessibility-focused ASR systems.</p>
+      <p class="rc-meta">Acoustic features · Speech classification</p>
+    </div>
+
+    <div class="rc">
+      <div class="rc-bar amber"></div>
+      <span class="rc-tag amber">Submitted · SPECOM 2026</span>
+      <h3>Neural Similarity Learning for Dysarthric Cross-Lingual &amp; Multilingual Speaker Verification</h3>
+      <p>Extending neural backend approach to multilingual settings, examining domain generalization across language families for impaired speech.</p>
+      <p class="rc-meta">Multilingual · Cross-lingual · Similarity learning</p>
+    </div>
+
+    <div class="rc">
+      <div class="rc-bar blue"></div>
+      <span class="rc-tag blue">Submitted · SLT Workshop 2026</span>
+      <h3>Duration Dominates: Disentangling Temporal and Structural Contributions to PPG-Alignment-Based Dysarthria Detection</h3>
+      <p>Analysis of how temporal duration features versus structural acoustic features drive dysarthria detection performance in PPG-alignment systems.</p>
+      <p class="rc-meta">PPG · MFA · Dysarthria detection</p>
+    </div>
+
+    <div class="rc">
+      <div class="rc-bar teal"></div>
+      <span class="rc-tag teal">Ongoing</span>
+      <h3>Phoneme Collapse in Forced Alignment (MFA)</h3>
+      <p>Failure mode analysis of the Montreal Forced Aligner under impaired and low-resource speech — a study in ML model robustness under distributional degradation.</p>
+      <p class="rc-meta">MFA · Robustness · Low-resource</p>
+    </div>
+
+    <div class="rc">
+      <div class="rc-bar teal"></div>
+      <span class="rc-tag teal">Proposed</span>
+      <h3>AgentHorizonBench: Long-Horizon Agentic Task Evaluation</h3>
+      <p>Benchmark for evaluating AI agents across 30–100 step trajectories with checkpoint-level scoring, reward-hacking detection, and cross-model diagnostics.</p>
+      <p class="rc-meta">AI Evaluation · Agentic AI · Open source</p>
+    </div>
+
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ABOUT -->
+<div class="wrap" id="about">
+  <p class="sec-eye">Background</p>
+  <h2 class="sec-h">Who I am</h2>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>
+        I'm a machine learning researcher who completed my M.Tech at DA-IICT, Gandhinagar (2026), specializing in speech representation learning and evaluation methodology for pathological speech.
+      </p>
+      <p>
+        My research trajectory has been shaped by a recurring problem: <strong>building systems that fail in ways standard benchmarks don't catch.</strong> In speaker verification for dysarthric speech, I found that cosine similarity metrics produced misleading results because pathological speech sits outside the training distribution in subtle, hard-to-detect ways. I proposed a neural backend model to address this — but more importantly, it taught me to question whether any metric is actually measuring what it claims to.
+      </p>
+      <p>
+        This instinct for <strong>construct validity, distribution shift, and failure mode analysis</strong> is what I now want to bring to frontier AI systems — particularly agentic evaluation, where the gap between benchmark performance and real-world reliability is widening fast.
+      </p>
+      <p>
+        GATE CSE Top 3% nationally. Harvard WEAmplify Scholar. Microsoft Learn Ambassador.
+      </p>
+    </div>
+    <div class="skills-stack">
+      <div>
+        <p class="sk-group-label">Research focus</p>
+        <div class="sk-tags">
+          <span class="sk-tag">AI Evaluation</span>
+          <span class="sk-tag">Benchmark Design</span>
+          <span class="sk-tag">Distribution Shift</span>
+          <span class="sk-tag">Construct Validity</span>
+          <span class="sk-tag">Robustness Analysis</span>
+          <span class="sk-tag">Reproducible Pipelines</span>
+        </div>
+      </div>
+      <div>
+        <p class="sk-group-label">ML & engineering</p>
+        <div class="sk-tags">
+          <span class="sk-tag">PyTorch</span>
+          <span class="sk-tag">HuggingFace</span>
+          <span class="sk-tag">ECAPA-TDNN</span>
+          <span class="sk-tag">Transformers</span>
+          <span class="sk-tag">LoRA / PEFT</span>
+          <span class="sk-tag">RAG</span>
+          <span class="sk-tag">Scikit-learn</span>
+          <span class="sk-tag">Python · C++ · SQL</span>
+        </div>
+      </div>
+      <div>
+        <p class="sk-group-label">Domains</p>
+        <div class="sk-tags">
+          <span class="sk-tag">Agentic AI</span>
+          <span class="sk-tag">Pathological Speech</span>
+          <span class="sk-tag">Computer Vision</span>
+          <span class="sk-tag">LLM Evaluation</span>
+          <span class="sk-tag">Time-Series</span>
+          <span class="sk-tag">NLP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- EDUCATION -->
+<div class="wrap">
+  <p class="sec-eye">Education</p>
+  <h2 class="sec-h">Academic training</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <p class="edu-degree">M.Tech in ICT (Machine Learning)</p>
+      <p class="edu-inst">DA-IICT, Gandhinagar, India</p>
+      <p class="edu-meta">
+        2024 – 2026 · CPI 8.61<br>
+        Specialization: Speech ML, Evaluation Methodology, Deep Learning
+      </p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">B.Tech in Computer Science</p>
+      <p class="edu-inst">Govind Ballabh Pant Engineering College</p>
+      <p class="edu-meta">
+        2020 – 2024 · 82% · First Division with Honours<br>
+        Focus: Core CS, Algorithms, Machine Learning
+      </p>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- EXPERIENCE -->
+<div class="wrap" id="experience">
+  <p class="sec-eye">Experience</p>
+  <h2 class="sec-h">Research trajectory</h2>
+  <div class="timeline">
+
+    <div class="tl-item now">
+      <p class="tl-date">Feb 2026 — Jul 2026</p>
+      <p class="tl-role">Research Intern</p>
+      <p class="tl-org">Speech Research Lab, DAU</p>
+      <ul class="tl-pts">
+        <li>Built speaker verification systems for dysarthric speech — a domain where standard metrics systematically mislead</li>
+        <li>Proposed neural backend model for learned similarity estimation, replacing cosine scoring with feature-aware neural scoring</li>
+        <li>Ran monolingual and cross-lingual experiments across 5+ evaluation configurations to measure domain generalization failure</li>
+        <li>Developed fully reproducible PyTorch pipelines with systematic ablation protocols</li>
+        <li>Three papers submitted from this work: SPECOM 2026 (×2), SLT Workshop 2026</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <p class="tl-date">Feb 2025 — Oct 2025</p>
+      <p class="tl-role">Prompt Engineer (Contract)</p>
+      <p class="tl-org">Turing (Remote)</p>
+      <ul class="tl-pts">
+        <li>Designed benchmark evaluation strategies for LLM inference at production scale</li>
+        <li>Developed LoRA fine-tuning workflows and prompt optimization pipelines</li>
+        <li>Built dataset preparation and inference evaluation frameworks for large language models</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <p class="tl-date">Dec 2025 — Feb 2026</p>
+      <p class="tl-role">Machine Learning Intern</p>
+      <p class="tl-org">Radiant Logic (Remote)</p>
+      <ul class="tl-pts">
+        <li>Researched transformer-based Text-to-SQL for enterprise knowledge retrieval</li>
+        <li>Designed synthetic data generation pipelines improving schema alignment and long-context reasoning</li>
+        <li>Explored uncertainty-aware inference and evaluation strategies for production-scale ML</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <p class="tl-date">Mar 2024 — Jul 2024</p>
+      <p class="tl-role">Research Collaborator</p>
+      <p class="tl-org">ESOC Research Program — Time Series Forecasting</p>
+      <ul class="tl-pts">
+        <li>Benchmarked ARIMA, Prophet, and LSTM using rolling-window evaluation protocols</li>
+        <li>Investigated temporal drift and model robustness under non-stationary conditions</li>
+        <li>Designed reproducible experimentation pipelines improving cross-model evaluation consistency</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <p class="tl-date">Sept 2023 — Nov 2023</p>
+      <p class="tl-role">Research Mentee</p>
+      <p class="tl-org">Amazon ML Summer School</p>
+      <ul class="tl-pts">
+        <li>Selected for cohort focused on transformer architectures and large-scale model training</li>
+        <li>Formal training in experimental design, model evaluation, and research problem formulation</li>
+        <li>Studied RL and retrieval-augmented generation under mentorship from industry researchers</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- PUBLICATIONS -->
+<div class="wrap" id="publications">
+  <p class="sec-eye">Output</p>
+  <h2 class="sec-h">Publications</h2>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-left">
+        <span class="pub-status-badge prep">In preparation</span>
+        <p class="pub-venue">Target:<br>INTERSPEECH /<br>IEEE/ACM TASLP</p>
+      </div>
+      <div>
+        <p class="pub-title">Neural Backend Speaker Verification for Dysarthric Speech under Cross-Lingual Conditions</p>
+        <p class="pub-desc">Proposes learned similarity estimation via neural backend scoring as a drop-in replacement for cosine similarity in pathological speech verification. Demonstrates consistent improvements under cross-language distribution shift.</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-left">
+        <span class="pub-status-badge submitted">Submitted</span>
+        <p class="pub-venue">SPECOM 2026</p>
+      </div>
+      <div>
+        <p class="pub-title">Prosodic Features for Classification of Normal vs. Dysarthric Speech</p>
+        <p class="pub-desc">Systematic analysis of prosodic and acoustic cues — pitch, rhythm, energy, duration — that distinguish dysarthric from typical speech, informing more interpretable diagnostic classifiers.</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-left">
+        <span class="pub-status-badge submitted">Submitted</span>
+        <p class="pub-venue">SPECOM 2026</p>
+      </div>
+      <div>
+        <p class="pub-title">Neural Similarity Learning for Dysarthric Cross-Lingual and Multilingual Speaker Verification</p>
+        <p class="pub-desc">Extends neural backend scoring to multilingual settings, examining domain generalization of learned similarity functions across language families for speakers with motor speech disorders.</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-left">
+        <span class="pub-status-badge submitted">Submitted</span>
+        <p class="pub-venue">SLT Workshop 2026</p>
+      </div>
+      <div>
+        <p class="pub-title">Duration Dominates: Disentangling Temporal and Structural Contributions to PPG-Alignment-Based Dysarthria Detection</p>
+        <p class="pub-desc">Ablation study revealing that temporal duration features carry disproportionate weight over structural acoustic features in PPG-alignment-based dysarthria detection — with implications for more robust system design.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ACHIEVEMENTS -->
+<div class="wrap">
+  <p class="sec-eye">Recognition</p>
+  <h2 class="sec-h">Achievements</h2>
+  <div class="ach-grid">
+    <div class="ach">
+      <div class="ach-icon">🎯</div>
+      <div class="ach-body"><strong>GATE CSE 2024</strong>96.46 percentile — Top 3% nationally</div>
+    </div>
+    <div class="ach">
+      <div class="ach-icon">📋</div>
+      <div class="ach-body"><strong>UGC NET Qualified</strong>PhD eligibility, CS &amp; Applications</div>
+    </div>
+    <div class="ach">
+      <div class="ach-icon">🎓</div>
+      <div class="ach-body"><strong>Harvard WEAmplify Scholar</strong>Global women in tech program</div>
+    </div>
+    <div class="ach">
+      <div class="ach-icon">⚡</div>
+      <div class="ach-body"><strong>Microsoft Learn Ambassador</strong>Beta student ambassador program</div>
+    </div>
+    <div class="ach">
+      <div class="ach-icon">🔬</div>
+      <div class="ach-body"><strong>Amazon ML Summer School</strong>Competitive researcher cohort, 2023</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-band" id="contact">
+  <h2>Let's work together.</h2>
+  <p>Open to research collaborations, fellowships, and conversations about AI evaluation and reliable ML systems.</p>
+  <div class="contact-links">
+    <a href="mailto:agarwalavantikaint@gmail.com" class="btn-fill">agarwalavantikaint@gmail.com →</a>
+    <a href="https://github.com/agarwalavantika" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
+    <a href="https://linkedin.com/in/agarwalavantika" target="_blank" rel="noopener" class="btn-outline">LinkedIn</a>
+  </div>
+</div>
+
+<footer>
+  <span>Avantika Agarwal · M.Tech DA-IICT 2026</span>
+  <span>agarwalavantika.github.io</span>
+</footer>
+
+<script>
+const items = [
+  { c: '', t: '<b>Neural Backend Verification</b> — paper in preparation' },
+  { c: 'amber', t: '<b>SPECOM 2026</b> — 2 papers under review' },
+  { c: 'blue', t: '<b>SLT Workshop 2026</b> — paper under review' },
+  { c: '', t: '<b>AgentHorizonBench</b> — benchmark design in progress' },
+  { c: '', t: '<b>MFA phoneme collapse</b> — failure mode investigation ongoing' },
+  { c: 'amber', t: '<b>M.Tech completed</b> — DA-IICT, Gandhinagar · 2026' },
+  { c: '', t: '<b>Open to:</b> AI evaluation · Agentic benchmarking · Research roles' },
+];
+const doubled = [...items, ...items];
+const html = doubled.map(i =>
+  `<span class="ticker-item"><span class="ti-dot ${i.c}"></span>${i.t}</span>`
+).join('');
+document.getElementById('ticker-track').innerHTML = html;
+</script>
+</body>
+</html>
