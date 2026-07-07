@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avantika Agarwal — ML Researcher</title>
+<title>Avantika Agarwal — ML Research Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -28,6 +28,7 @@
   --blue: #4A9EFF;
   --blue-dim: rgba(74,158,255,0.10);
   --red: #E05555;
+  --red-dim: rgba(224,85,85,0.10);
 }
 
 html { scroll-behavior: smooth; }
@@ -41,7 +42,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── TICKER ── */
 .ticker-wrap {
   background: var(--bg2);
   border-bottom: 1px solid var(--border);
@@ -76,11 +76,11 @@ body {
 }
 .ti-dot.amber { background: var(--amber); }
 .ti-dot.blue { background: var(--blue); }
+.ti-dot.red { background: var(--red); }
 .ticker-item b { color: var(--text); font-weight: 500; }
 @keyframes scroll-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-/* ── NAV ── */
 nav {
   display: flex;
   justify-content: space-between;
@@ -108,7 +108,6 @@ nav {
 }
 .nav-links a:hover { color: var(--accent); }
 
-/* ── HERO ── */
 .hero {
   padding: 96px 56px 88px;
   max-width: 1120px;
@@ -133,7 +132,7 @@ nav {
 }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero-sub {
-  max-width: 540px;
+  max-width: 560px;
   font-size: 16px;
   color: var(--text-muted);
   line-height: 1.8;
@@ -158,11 +157,9 @@ nav {
 }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ── LAYOUT ── */
 .wrap { max-width: 1120px; margin: 0 auto; padding: 80px 56px; }
 .rule { border: none; border-top: 1px solid var(--border); max-width: 1120px; margin: 0 auto; }
 
-/* ── SECTION HEADER ── */
 .sec-eye {
   font-family: 'Space Mono', monospace;
   font-size: 10px;
@@ -180,7 +177,6 @@ nav {
   margin-bottom: 52px;
 }
 
-/* ── ACTIVE RESEARCH CARDS ── */
 .research-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -204,6 +200,7 @@ nav {
 .rc-bar.teal { background: var(--accent); }
 .rc-bar.amber { background: var(--amber); }
 .rc-bar.blue { background: var(--blue); }
+.rc-bar.red { background: var(--red); }
 .rc-tag {
   display: inline-block;
   font-family: 'Space Mono', monospace;
@@ -217,6 +214,7 @@ nav {
 .rc-tag.teal { background: var(--accent-dim); color: var(--accent); }
 .rc-tag.amber { background: var(--amber-dim); color: var(--amber); }
 .rc-tag.blue { background: var(--blue-dim); color: var(--blue); }
+.rc-tag.red { background: var(--red-dim); color: var(--red); }
 .rc h3 {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
@@ -233,7 +231,6 @@ nav {
   letter-spacing: 0.03em;
 }
 
-/* ── ABOUT TWO-COL ── */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
 .about-body { font-size: 15px; color: var(--text-muted); line-height: 1.85; }
 .about-body p + p { margin-top: 18px; }
@@ -260,7 +257,6 @@ nav {
 }
 .sk-tag:hover { border-color: var(--border-strong); color: var(--text); }
 
-/* ── TIMELINE ── */
 .timeline { position: relative; padding-left: 30px; }
 .timeline::before {
   content: '';
@@ -308,7 +304,6 @@ nav {
 }
 .tl-pts li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
 
-/* ── PUBLICATIONS ── */
 .pub-list { display: flex; flex-direction: column; gap: 0; }
 .pub-item {
   display: grid;
@@ -330,8 +325,10 @@ nav {
   border-radius: 3px;
   white-space: nowrap;
 }
+.pub-status-badge.accepted { background: var(--accent-dim); color: var(--accent); }
 .pub-status-badge.prep { background: var(--amber-dim); color: var(--amber); }
 .pub-status-badge.submitted { background: var(--blue-dim); color: var(--blue); }
+.pub-status-badge.rejected { background: var(--red-dim); color: var(--red); }
 .pub-venue {
   margin-top: 10px;
   font-family: 'Space Mono', monospace;
@@ -349,7 +346,6 @@ nav {
 }
 .pub-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
-/* ── ACHIEVEMENTS ── */
 .ach-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -378,7 +374,6 @@ nav {
 .ach-body { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 .ach-body strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 2px; }
 
-/* ── EDUCATION ── */
 .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .edu-card {
   background: var(--bg2);
@@ -402,7 +397,6 @@ nav {
   line-height: 1.7;
 }
 
-/* ── CONTACT ── */
 .contact-band {
   background: var(--bg2);
   border-top: 1px solid var(--border);
@@ -417,10 +411,9 @@ nav {
   letter-spacing: -0.025em;
   margin-bottom: 14px;
 }
-.contact-band p { color: var(--text-muted); font-size: 15px; margin-bottom: 36px; max-width: 420px; margin-left: auto; margin-right: auto; }
+.contact-band p { color: var(--text-muted); font-size: 15px; margin-bottom: 36px; max-width: 440px; margin-left: auto; margin-right: auto; }
 .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-/* ── FOOTER ── */
 footer {
   padding: 26px 56px;
   display: flex;
@@ -447,12 +440,10 @@ footer span {
 </head>
 <body>
 
-<!-- TICKER -->
 <div class="ticker-wrap" aria-label="Research status feed">
   <div class="ticker-track" id="ticker-track"></div>
 </div>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Avantika Agarwal</a>
   <ul class="nav-links">
@@ -464,12 +455,11 @@ footer span {
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <p class="eyebrow">ML Researcher · AI Evaluation · Reliable Systems</p>
+  <p class="eyebrow">ML Research Engineer · AI Evaluation · Reliable Systems</p>
   <h1>Building AI<br>systems you can<br><em>actually trust.</em></h1>
   <p class="hero-sub">
-    M.Tech (DA-IICT, 2026) specializing in evaluation methodology, robustness under distribution shift, and reproducible ML pipelines. My work in pathological speech taught me that the hardest problem in AI isn't building models — it's knowing when to trust them.
+    M.Tech in Machine Learning (DA-IICT, 2026). I build reproducible PyTorch pipelines end-to-end — from data through training, ablation, and evaluation — and I publish on evaluation methodology and robustness under distribution shift. My work in pathological speech taught me that the hardest problem in AI isn't building models — it's knowing when to trust them.
   </p>
   <div class="hero-ctas">
     <a href="mailto:agarwalavantikaint@gmail.com" class="btn-fill">Get in touch →</a>
@@ -480,7 +470,6 @@ footer span {
 
 <hr class="rule">
 
-<!-- ACTIVE RESEARCH -->
 <div class="wrap" id="research">
   <p class="sec-eye">Active work</p>
   <h2 class="sec-h">Research in progress</h2>
@@ -488,35 +477,29 @@ footer span {
 
     <div class="rc">
       <div class="rc-bar teal"></div>
-      <span class="rc-tag teal">In preparation</span>
-      <h3>Neural Backend Speaker Verification for Dysarthric Speech under Cross-Lingual Conditions</h3>
-      <p>Learned similarity estimation beyond cosine scoring for pathological speech. Proposes neural backend scoring with embedding difference and interaction features.</p>
-      <p class="rc-meta">ECAPA-TDNN · PyTorch · Cross-lingual eval</p>
-    </div>
-
-    <div class="rc">
-      <div class="rc-bar amber"></div>
-      <span class="rc-tag amber">Submitted · SPECOM 2026</span>
+      <span class="rc-tag teal">Accepted · SPECOM 2026</span>
       <h3>Prosodic Features for Classification of Normal vs. Dysarthric Speech</h3>
-      <p>Investigating prosodic and acoustic cues distinguishing dysarthric speech patterns, with implications for accessibility-focused ASR systems.</p>
+      <p>Systematic analysis of prosodic and acoustic cues distinguishing dysarthric speech patterns, with implications for accessibility-focused ASR systems.</p>
       <p class="rc-meta">Acoustic features · Speech classification</p>
-    </div>
-
-    <div class="rc">
-      <div class="rc-bar amber"></div>
-      <span class="rc-tag amber">Submitted · SPECOM 2026</span>
-      <h3>Neural Similarity Learning for Dysarthric Cross-Lingual &amp; Multilingual Speaker Verification</h3>
-      <p>Extending neural backend approach to multilingual settings, examining domain generalization across language families for impaired speech.</p>
-      <p class="rc-meta">Multilingual · Cross-lingual · Similarity learning</p>
     </div>
 
     <div class="rc">
       <div class="rc-bar blue"></div>
       <span class="rc-tag blue">Submitted · SLT Workshop 2026</span>
-      <h3>Duration Dominates: Disentangling Temporal and Structural Contributions to PPG-Alignment-Based Dysarthria Detection</h3>
-      <p>Analysis of how temporal duration features versus structural acoustic features drive dysarthria detection performance in PPG-alignment systems.</p>
-      <p class="rc-meta">PPG · MFA · Dysarthria detection</p>
+      <h3>Neural Similarity Learning for Dysarthric Cross-Lingual &amp; Multilingual Speaker Verification</h3>
+      <p>Extending neural backend scoring to multilingual settings, examining domain generalization across language families for impaired speech.</p>
+      <p class="rc-meta">Multilingual · Cross-lingual · Similarity learning</p>
     </div>
+
+    <div class="rc">
+      <div class="rc-bar blue"></div>
+      <span class="rc-tag blue">Submitted · TMLR</span>
+      <h3>Reproducibility Study — Speech Model Evaluation</h3>
+      <p>Reproducibility-certification submission re-examining published results and evaluation protocols for robustness under re-implementation.</p>
+      <p class="rc-meta">Reproducibility · Evaluation methodology</p>
+    </div>
+
+    
 
     <div class="rc">
       <div class="rc-bar teal"></div>
@@ -539,20 +522,19 @@ footer span {
 
 <hr class="rule">
 
-<!-- ABOUT -->
 <div class="wrap" id="about">
   <p class="sec-eye">Background</p>
   <h2 class="sec-h">Who I am</h2>
   <div class="about-grid">
     <div class="about-body">
       <p>
-        I'm a machine learning researcher who completed my M.Tech at DA-IICT, Gandhinagar (2026), specializing in speech representation learning and evaluation methodology for pathological speech.
+        I'm an ML research engineer who completed my M.Tech at DA-IICT, Gandhinagar (2026), specializing in speech representation learning and evaluation methodology for pathological speech.
       </p>
       <p>
-        My research trajectory has been shaped by a recurring problem: <strong>building systems that fail in ways standard benchmarks don't catch.</strong> In speaker verification for dysarthric speech, I found that cosine similarity metrics produced misleading results because pathological speech sits outside the training distribution in subtle, hard-to-detect ways. I proposed a neural backend model to address this — but more importantly, it taught me to question whether any metric is actually measuring what it claims to.
+        My work has been shaped by a recurring problem: <strong>building systems that fail in ways standard benchmarks don't catch — and shipping the pipelines to prove it.</strong> In speaker verification for dysarthric speech, I found that cosine similarity metrics produced misleading results because pathological speech sits outside the training distribution in subtle, hard-to-detect ways. I designed and built a neural backend model to address this — implemented end-to-end in PyTorch, benchmarked across 5+ evaluation configurations — but more importantly, it taught me to question whether any metric is actually measuring what it claims to.
       </p>
       <p>
-        This instinct for <strong>construct validity, distribution shift, and failure mode analysis</strong> is what I now want to bring to frontier AI systems — particularly agentic evaluation, where the gap between benchmark performance and real-world reliability is widening fast.
+        This instinct for <strong>construct validity, distribution shift, and failure mode analysis</strong>, paired with hands-on engineering of reproducible ML pipelines, is what I now want to bring to frontier AI systems as a research engineer — particularly agentic evaluation, where the gap between benchmark performance and real-world reliability is widening fast.
       </p>
       <p>
         GATE CSE Top 3% nationally. Harvard WEAmplify Scholar. Microsoft Learn Ambassador.
@@ -600,7 +582,6 @@ footer span {
 
 <hr class="rule">
 
-<!-- EDUCATION -->
 <div class="wrap">
   <p class="sec-eye">Education</p>
   <h2 class="sec-h">Academic training</h2>
@@ -609,7 +590,7 @@ footer span {
       <p class="edu-degree">M.Tech in ICT (Machine Learning)</p>
       <p class="edu-inst">DA-IICT, Gandhinagar, India</p>
       <p class="edu-meta">
-        2024 – 2026 · CPI 8.61<br>
+        2024 – 2026 · CPI 8.03<br>
         Specialization: Speech ML, Evaluation Methodology, Deep Learning
       </p>
     </div>
@@ -626,10 +607,9 @@ footer span {
 
 <hr class="rule">
 
-<!-- EXPERIENCE -->
 <div class="wrap" id="experience">
   <p class="sec-eye">Experience</p>
-  <h2 class="sec-h">Research trajectory</h2>
+  <h2 class="sec-h">Research & engineering trajectory</h2>
   <div class="timeline">
 
     <div class="tl-item now">
@@ -637,11 +617,11 @@ footer span {
       <p class="tl-role">Research Intern</p>
       <p class="tl-org">Speech Research Lab, DAU</p>
       <ul class="tl-pts">
-        <li>Built speaker verification systems for dysarthric speech — a domain where standard metrics systematically mislead</li>
-        <li>Proposed neural backend model for learned similarity estimation, replacing cosine scoring with feature-aware neural scoring</li>
-        <li>Ran monolingual and cross-lingual experiments across 5+ evaluation configurations to measure domain generalization failure</li>
+        <li>Built and shipped a full PyTorch pipeline for speaker verification on dysarthric speech — a domain where standard metrics systematically mislead</li>
+        <li>Designed and implemented a neural backend scoring model, replacing cosine scoring with feature-aware neural scoring</li>
+        <li>Engineered and ran monolingual and cross-lingual experiments across 5+ evaluation configurations to measure domain generalization failure</li>
         <li>Developed fully reproducible PyTorch pipelines with systematic ablation protocols</li>
-        <li>Three papers submitted from this work: SPECOM 2026 (×2), SLT Workshop 2026</li>
+        <li>Result: 1 paper accepted at SPECOM 2026; co-authored 2 additional submissions (SLT Workshop 2026, TMLR)</li>
       </ul>
     </div>
 
@@ -650,9 +630,8 @@ footer span {
       <p class="tl-role">Prompt Engineer (Contract)</p>
       <p class="tl-org">Turing (Remote)</p>
       <ul class="tl-pts">
-        <li>Designed benchmark evaluation strategies for LLM inference at production scale</li>
-        <li>Developed LoRA fine-tuning workflows and prompt optimization pipelines</li>
-        <li>Built dataset preparation and inference evaluation frameworks for large language models</li>
+        <li>Built dataset-preparation and inference-evaluation frameworks for LLMs at production scale</li>
+        <li>Developed LoRA fine-tuning workflows and prompt-optimization pipelines used in benchmark evaluation of LLM inference</li>
       </ul>
     </div>
 
@@ -661,9 +640,9 @@ footer span {
       <p class="tl-role">Machine Learning Intern</p>
       <p class="tl-org">Radiant Logic (Remote)</p>
       <ul class="tl-pts">
-        <li>Researched transformer-based Text-to-SQL for enterprise knowledge retrieval</li>
-        <li>Designed synthetic data generation pipelines improving schema alignment and long-context reasoning</li>
-        <li>Explored uncertainty-aware inference and evaluation strategies for production-scale ML</li>
+        <li>Built transformer-based Text-to-SQL pipelines for enterprise knowledge retrieval</li>
+        <li>Designed synthetic data-generation pipelines that improved schema alignment and long-context reasoning</li>
+        <li>Implemented uncertainty-aware inference for evaluation of production-scale ML systems</li>
       </ul>
     </div>
 
@@ -672,9 +651,8 @@ footer span {
       <p class="tl-role">Research Collaborator</p>
       <p class="tl-org">ESOC Research Program — Time Series Forecasting</p>
       <ul class="tl-pts">
-        <li>Benchmarked ARIMA, Prophet, and LSTM using rolling-window evaluation protocols</li>
-        <li>Investigated temporal drift and model robustness under non-stationary conditions</li>
-        <li>Designed reproducible experimentation pipelines improving cross-model evaluation consistency</li>
+        <li>Built and benchmarked ARIMA, Prophet, and LSTM pipelines using rolling-window evaluation</li>
+        <li>Designed reproducible experimentation infrastructure improving cross-model evaluation consistency</li>
       </ul>
     </div>
 
@@ -683,9 +661,8 @@ footer span {
       <p class="tl-role">Research Mentee</p>
       <p class="tl-org">Amazon ML Summer School</p>
       <ul class="tl-pts">
-        <li>Selected for cohort focused on transformer architectures and large-scale model training</li>
-        <li>Formal training in experimental design, model evaluation, and research problem formulation</li>
-        <li>Studied RL and retrieval-augmented generation under mentorship from industry researchers</li>
+        <li>Selected for a competitive cohort focused on transformer architectures and large-scale model training</li>
+        <li>Implemented NLP/deep learning models and explored RL and retrieval-augmented generation under industry mentorship</li>
       </ul>
     </div>
 
@@ -694,7 +671,6 @@ footer span {
 
 <hr class="rule">
 
-<!-- PUBLICATIONS -->
 <div class="wrap" id="publications">
   <p class="sec-eye">Output</p>
   <h2 class="sec-h">Publications</h2>
@@ -702,18 +678,7 @@ footer span {
 
     <div class="pub-item">
       <div class="pub-left">
-        <span class="pub-status-badge prep">In preparation</span>
-        <p class="pub-venue">Target:<br>INTERSPEECH /<br>IEEE/ACM TASLP</p>
-      </div>
-      <div>
-        <p class="pub-title">Neural Backend Speaker Verification for Dysarthric Speech under Cross-Lingual Conditions</p>
-        <p class="pub-desc">Proposes learned similarity estimation via neural backend scoring as a drop-in replacement for cosine similarity in pathological speech verification. Demonstrates consistent improvements under cross-language distribution shift.</p>
-      </div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-left">
-        <span class="pub-status-badge submitted">Submitted</span>
+        <span class="pub-status-badge accepted">Accepted</span>
         <p class="pub-venue">SPECOM 2026</p>
       </div>
       <div>
@@ -725,7 +690,7 @@ footer span {
     <div class="pub-item">
       <div class="pub-left">
         <span class="pub-status-badge submitted">Submitted</span>
-        <p class="pub-venue">SPECOM 2026</p>
+        <p class="pub-venue">SLT Workshop 2026</p>
       </div>
       <div>
         <p class="pub-title">Neural Similarity Learning for Dysarthric Cross-Lingual and Multilingual Speaker Verification</p>
@@ -736,11 +701,22 @@ footer span {
     <div class="pub-item">
       <div class="pub-left">
         <span class="pub-status-badge submitted">Submitted</span>
-        <p class="pub-venue">SLT Workshop 2026</p>
+        <p class="pub-venue">TMLR<br>(Reproducibility)</p>
       </div>
       <div>
-        <p class="pub-title">Duration Dominates: Disentangling Temporal and Structural Contributions to PPG-Alignment-Based Dysarthria Detection</p>
-        <p class="pub-desc">Ablation study revealing that temporal duration features carry disproportionate weight over structural acoustic features in PPG-alignment-based dysarthria detection — with implications for more robust system design.</p>
+        <p class="pub-title">Reproducibility Study — Speech Model Evaluation</p>
+        <p class="pub-desc">Reproducibility-certification submission re-examining published results and evaluation protocols under independent re-implementation.</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-left">
+        <span class="pub-status-badge rejected">Rejected</span>
+        <p class="pub-venue">SPECOM 2026</p>
+      </div>
+      <div>
+        <p class="pub-title">Neural Backend Speaker Verification for Dysarthric Speech under Cross-Lingual Conditions</p>
+        <p class="pub-desc">Proposes learned similarity estimation via neural backend scoring as a drop-in replacement for cosine similarity in pathological speech verification. Rejected at SPECOM 2026; currently being revised for resubmission.</p>
       </div>
     </div>
 
@@ -749,38 +725,36 @@ footer span {
 
 <hr class="rule">
 
-<!-- ACHIEVEMENTS -->
 <div class="wrap">
   <p class="sec-eye">Recognition</p>
   <h2 class="sec-h">Achievements</h2>
   <div class="ach-grid">
     <div class="ach">
-      <div class="ach-icon">🎯</div>
+      <div class="ach-icon"></div>
       <div class="ach-body"><strong>GATE CSE 2024</strong>96.46 percentile — Top 3% nationally</div>
     </div>
     <div class="ach">
-      <div class="ach-icon">📋</div>
+      <div class="ach-icon"></div>
       <div class="ach-body"><strong>UGC NET Qualified</strong>PhD eligibility, CS &amp; Applications</div>
     </div>
     <div class="ach">
-      <div class="ach-icon">🎓</div>
+      <div class="ach-icon"></div>
       <div class="ach-body"><strong>Harvard WEAmplify Scholar</strong>Global women in tech program</div>
     </div>
     <div class="ach">
-      <div class="ach-icon">⚡</div>
+      <div class="ach-icon"></div>
       <div class="ach-body"><strong>Microsoft Learn Ambassador</strong>Beta student ambassador program</div>
     </div>
     <div class="ach">
-      <div class="ach-icon">🔬</div>
+      <div class="ach-icon"></div>
       <div class="ach-body"><strong>Amazon ML Summer School</strong>Competitive researcher cohort, 2023</div>
     </div>
   </div>
 </div>
 
-<!-- CONTACT -->
 <div class="contact-band" id="contact">
   <h2>Let's work together.</h2>
-  <p>Open to research collaborations, fellowships, and conversations about AI evaluation and reliable ML systems.</p>
+  <p>Open to research engineer roles, fellowships, and conversations about AI evaluation and reliable ML systems.</p>
   <div class="contact-links">
     <a href="mailto:agarwalavantikaint@gmail.com" class="btn-fill">agarwalavantikaint@gmail.com →</a>
     <a href="https://github.com/agarwalavantika" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
@@ -795,13 +769,14 @@ footer span {
 
 <script>
 const items = [
-  { c: '', t: '<b>Neural Backend Verification</b> — paper in preparation' },
-  { c: 'amber', t: '<b>SPECOM 2026</b> — 2 papers under review' },
+  { c: '', t: '<b>SPECOM 2026</b> — paper accepted' },
   { c: 'blue', t: '<b>SLT Workshop 2026</b> — paper under review' },
+  { c: 'blue', t: '<b>TMLR</b> — reproducibility submission under review' },
+  { c: 'red', t: '<b>Neural Backend Verification</b> — rejected, under revision' },
   { c: '', t: '<b>AgentHorizonBench</b> — benchmark design in progress' },
   { c: '', t: '<b>MFA phoneme collapse</b> — failure mode investigation ongoing' },
   { c: 'amber', t: '<b>M.Tech completed</b> — DA-IICT, Gandhinagar · 2026' },
-  { c: '', t: '<b>Open to:</b> AI evaluation · Agentic benchmarking · Research roles' },
+  { c: '', t: '<b>Open to:</b> Research engineer roles · AI evaluation · Agentic benchmarking' },
 ];
 const doubled = [...items, ...items];
 const html = doubled.map(i =>
